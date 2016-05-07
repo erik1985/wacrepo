@@ -1,0 +1,61 @@
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript">
+		function httpGet(theUrl)
+		{
+		    var xmlHttp = new XMLHttpRequest()
+		    xmlHttp.open( "GET", theUrl, false ) // false for synchronous request
+		    xmlHttp.send( null )
+		    return xmlHttp.responseText
+		}
+	
+		window.onload = function() {
+			var x = JSON.parse(httpGet("restservices/country"))
+			x = JSON.stringify(x, null, '\t')
+			document.getElementById("text").innerHTML = x
+		};
+		
+	    var z = {"name" : "Mark", "results" : [ 5.4, 5.7, 8.9 ] }
+		var y = [10, 15, null]
+		confirm(y[2	])
+		confirm(z["results"])
+
+		
+		$(document).ready(function(){
+			
+		    $("button").click(function(){
+		    	data = { id: 4, customer: "Bart" }
+
+		        $.ajax({	url: "restservices/orders", 
+		        			type: "POST", 
+		        			data: JSON.stringify(data), 
+			        		contentType: "application/json; charset=utf-8", 
+			        		success: function(data, status){
+				        	    alert("Data: " + data + "\nStatus: " + status);
+		    	       		}, 
+		        	   		dataType: "application/json"
+		        		})
+
+		    	
+		    })
+			
+		});
+	</script>
+	<style type="text/css">
+		div#text {
+			white-space: pre
+		}
+	</style>
+</head>
+<body>
+	<div id="text"></div>
+
+	<form method="post" action="restservices/orders" >
+		<input name="id" type="text" />
+		<input type="submit"/>	
+	</form>
+	<button></button>
+		
+</body>
+</html>

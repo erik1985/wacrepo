@@ -8,10 +8,10 @@
 	<servlet>
 		<servlet-name>Jersey REST Service</servlet-name>
 		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
-		<!-- Register resources and providers under com.vogella.jersey.first package. -->
+		<!-- Register resources and providers under worldmap.services package. -->
 		<init-param>
 			<param-name>jersey.config.server.provider.packages</param-name>
-			<param-value>firstapp</param-value>
+			<param-value>worldmap.services</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 		
